@@ -1,7 +1,5 @@
 package dao;
 
-import static java.lang.System.out;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
