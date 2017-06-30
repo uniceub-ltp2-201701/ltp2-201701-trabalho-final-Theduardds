@@ -42,11 +42,7 @@ public class ServletEscreverCriticaFilme extends HttpServlet {
 		String idfilme = request.getParameter("idfilme");
 		String idusuario = request.getParameter("idusuario");
 		String critica = request.getParameter("critica");
-		
-		out.println(idfilme);
-		out.println(idusuario);
-		out.println(critica);
-		
+	
 		CriticaFilmeDAO cfd = new CriticaFilmeDAO(conexao);
 		
 		boolean resultado = cfd.adicionarCritica(idfilme, idusuario, critica);
@@ -66,7 +62,7 @@ public class ServletEscreverCriticaFilme extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/criticaFilme");
 			rd.forward(request, response);
 		}else{
-			request.setAttribute("mensagem", "Erro ao escrever crítica, tente novamente!");
+			request.setAttribute("mensagem", "Erro ao escrever crÃ­tica, tente novamente!");
 			RequestDispatcher rd = request.getRequestDispatcher("/respostaPaginaCriticaFilme.jsp");
 			rd.forward(request, response);
 		}
@@ -105,7 +101,7 @@ public class ServletEscreverCriticaFilme extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/criticaFilme");
 			rd.forward(request, response);
 		}else{
-			request.setAttribute("mensagem", "Erro ao escrever crítica, tente novamente!");
+			request.setAttribute("mensagem", "Erro ao escrever crÃ­tica, tente novamente!");
 			RequestDispatcher rd = request.getRequestDispatcher("/respostaPaginaCriticaFilme.jsp");
 			rd.forward(request, response);
 		}
