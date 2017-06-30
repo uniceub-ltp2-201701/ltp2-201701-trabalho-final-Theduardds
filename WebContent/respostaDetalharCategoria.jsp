@@ -69,7 +69,7 @@ if(i>3){%>
 	<% if(i==4 || i==8 || i==12) {%>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<div class="polaroid" style="margin-left: 250px;">
-	<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src=" + (request.getContextPath()) + "/images/" + filmes.get(i).getIdFilme() + ".jpg alt='Image not available'/></a>"); %>
+	<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src='" + filmes.get(i).getPoster() + "' alt='Image not available'/></a>"); %>
 	<div class="container">
 	<% out.println("<p><a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='>" + filmes.get(i).getTitulo() + "</a></p>"); %>
 	
@@ -81,7 +81,7 @@ if(i>3){%>
  	
  	<div class="polaroid" style="margin-left: 15px;">
 
-	<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src=" + (request.getContextPath()) + "/images/" + filmes.get(i).getIdFilme() + ".jpg alt='Image not available'/></a>"); %>
+	<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src='" + filmes.get(i).getPoster() + "' alt='Image not available'/></a>"); %>
 	<div class="container">
 	<% out.println("<p><a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='>" + filmes.get(i).getTitulo() + "</a></p>"); %>
 
@@ -94,7 +94,7 @@ if(i>3){%>
 
 if(i==0) {%>
 <div class="polaroid" style="margin-left: 250px;">
-<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src=" + (request.getContextPath()) + "/images/" + filmes.get(i).getIdFilme() + ".jpg alt='Image not available'/></a>"); %>
+<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src='" + filmes.get(i).getPoster() + "' alt='Image not available'/></a>"); %>
 <div class="container">
 <% out.println("<p><a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='>" + filmes.get(i).getTitulo() + "</a></p>"); %>
 
@@ -105,7 +105,7 @@ if(i==0) {%>
 <% }else{ %>
 <div class="polaroid" style="margin-left: 15px;">
 
-<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src=" + (request.getContextPath()) + "/images/" + filmes.get(i).getIdFilme() + ".jpg alt=Image not available/></a>"); %>
+<% out.println("<a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='><img src='" + filmes.get(i).getPoster() + "' alt=Image not available/></a>"); %>
 <div class="container">
 <% out.println("<p><a href='/SistemaFilmes/detalharFilme?idfilme=" + filmes.get(i).getIdFilme() + "&mensagem='>" + filmes.get(i).getTitulo() + "</a></p>"); %>
 

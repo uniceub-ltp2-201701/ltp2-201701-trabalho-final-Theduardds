@@ -2,7 +2,6 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-
 body
 {
   margin: 0;
@@ -40,7 +39,7 @@ a:hover
   user-select: none;
 }
 
-#menuToggle input
+#menuToggle input[name="menu"]
 {
   display: block;
   width: 40px;
@@ -158,6 +157,25 @@ a:hover
   opacity: 1;
 }
 
+p {
+	 width: 450px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+img{
+	height: 250px;
+	weight: auto;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+
+.texto{
+ 	margin-top:70px; 
+ 	font-size:25px;
+}
+
 table {
     border-collapse: collapse;
     align: center;
@@ -177,25 +195,42 @@ th {
     color: white;
 }
 
-p {
-	 width: 450px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-h1{
-	margin-left:250px;
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-img{
-	height: 350px;
-	weight: auto;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+input[type=submit]:hover {
+    background-color: #45a049;
 }
 
-.texto{
- 	margin-top:70px; 
- 	font-size:25px;
+#local{
+	margin:auto;
+ 	top: 0;
+  	right: 0;
+  	bottom: 0;
+ 	left: 0;
+ 	width: 600px;
+ 	height:auto;
+	border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border:2px solid #4CAF50;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-

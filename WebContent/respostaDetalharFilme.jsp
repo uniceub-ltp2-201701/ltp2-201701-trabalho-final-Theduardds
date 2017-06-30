@@ -11,6 +11,7 @@
 <html>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/respostaDetalharFilme.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Detalhar Filme</title>
@@ -41,11 +42,16 @@
 	ArrayList<Ator> atores = (ArrayList<Ator>) request.getAttribute("atores");
 	ArrayList<Diretor> diretores = (ArrayList<Diretor>) request.getAttribute("diretores");
 	ArrayList<Categoria> categorias = (ArrayList<Categoria>) request.getAttribute("categorias");
+	double avaliacao = (double) request.getAttribute("avaliacao");
 
 	HttpSession s = (HttpSession) request.getSession(true);
 	Usuario u = (Usuario)s.getAttribute("admin");
 
-	if(!(u==null)){%>
+	%>
+	
+	
+	
+	<%if(!(u==null)){%>
 
 
 			<table style="border-collapse: collapse;align: center;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:1px solid #4CAF50;background-color: #4CAF50;text-align: left;background-color: #4CAF50;color: white;;float:right;">
@@ -55,23 +61,49 @@
 		
 		<br>
 	<%}%>
+	<table style="border-collapse: collapse;margin-right:30px; align: center;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:1px solid #4CAF50;background-color: #4CAF50;text-align: left;width:auto;background-color: #4CAF50;color: white;float:right;">
+	<th><a href="criticaFilme?idfilme=<%=f.getIdFilme() %>" style="color:white;">Críticas</a></th>
+	</table>
 	
 	<%if(!(u==null) && u.getPrivilegio()==1){ %>
 	
 	<br><br><br>
 	
-	<div class="container" style="width: 250px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);color:white; float: right; padding: 15px; border:1px solid #c62828;background-color: #c62828; height: auto; width: 150px; text-align: center; word-wrap: break-word; text-overflow: ellipsis;">
+	<div class="container" style="width: 250px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);color:white; float: right; padding: 15px; border:1px solid #c62828;background-color: #c62828; height: auto; width: 130px; text-align: center; word-wrap: break-word; text-overflow: ellipsis;">
 			<a href="/SistemaFilmes/paginaEditarFilme?idfilme=<%out.println(f.getIdFilme());%>" style="color:white;">Editar Filme</a>
 		</div>
 	
 	<%}%>
+	
 
-	<div class="texto" align="center">
+	
+
+	<div class="texto" align="center" style="margin-top:50px;">
 	<table border="1" cellspacing="0" cellpadding="0">
 	<th><%out.println(f.getTitulo());%></th>
 	</table><br><br>
+	<table border="1">
+	<th>Avaliação média dos usuários: <%=avaliacao %></th>
+	</table><br>
+	<% out.println("<img src='" + f.getPoster() + "' alt=Image not available/>"); %>
+
+	<br><br>
 	
-	<% out.println("<img src='" + f.getPoster() + "' alt=Image not available/>"); %><br><br>
+
+
+<% if(!(u==null)){%>	
+<table border="1">
+<form action="avaliarFilme" method="get">
+  <th><label for="avaliacao">Avaliar</label>
+	<input id="nota" type="range" name="nota"  min="1" max="10" value="5" onchange="this.form.nota1.value=this.value"></input>
+	<input type="number" name="nota1" min="1" max="10" value="5" oninput="this.form.nota.value=this.value" style="padding:5px 2px"/>
+	<input type="hidden" name="idfilme" value="<%=f.getIdFilme()%>">
+	<input type="hidden" name="usuario" value="<%=u.getIdUsuario() %>">
+  	<input type="submit" style="background-color:#4CAF50; border:none;"></th>
+  </form>
+  </table>
+  <br>
+<%}%>
 	
 	<table border="1" cellspacing="0" cellpadding="0" style="float:left; margin-left:300px;">
 	<tr><th>Sinopse</th></tr>
@@ -97,7 +129,7 @@
 	</table>
 
 	<table border="1" cellspacing="0" cellpadding="0" style="float:left; font-size:15px; margin-left:15px">
-	<tr><th>Avaliação</th></tr>
+	<tr><th>Avaliação da imprensa</th></tr>
 	<tr><td><% out.println("Avaliação: " + f.getAvaliacao()); %></td></tr>
 	</table>
 

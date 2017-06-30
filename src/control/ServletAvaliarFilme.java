@@ -1,5 +1,7 @@
 package control;
 
+import static java.lang.System.out;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -19,18 +21,18 @@ import model.Ator;
 import model.Categoria;
 import model.Diretor;
 import model.Filme;
-import static java.lang.System.out;
+
 /**
- * Servlet implementation class ServletDetalharFilme
+ * Servlet implementation class ServletAvaliarFilme
  */
-@WebServlet("/detalharFilme")
-public class ServletDetalharFilme extends HttpServlet {
+@WebServlet("/avaliarFilme")
+public class ServletAvaliarFilme extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletDetalharFilme() {
+    public ServletAvaliarFilme() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,15 +41,18 @@ public class ServletDetalharFilme extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Connection conexao = Conexao.getConexao();
 		
 		String idFilme = request.getParameter("idfilme");
+		String usuario = request.getParameter("usuario");
+		String nota = request.getParameter("nota");
+
+		AvaliarFilmeDAO afd = new AvaliarFilmeDAO(conexao);
+		
+		afd.avaliarFilme(idFilme, usuario, nota);
 		
 		DetalharFilmeDAO dfd = new DetalharFilmeDAO(conexao);
 		PegarCategoriasDAO pcd = new PegarCategoriasDAO(conexao);
-		AvaliarFilmeDAO afd = new AvaliarFilmeDAO(conexao);
-		
 		Filme f = dfd.getFilme(idFilme);	
 		ArrayList<Ator> atores = dfd.getAtorPorFilme(idFilme);
 		ArrayList<Diretor> diretores = dfd.getDiretorPorFilme(idFilme);
@@ -62,34 +67,6 @@ public class ServletDetalharFilme extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/respostaDetalharFilme.jsp");
 		rd.forward(request, response);
-		
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Connection conexao = Conexao.getConexao();
-		
-		String idFilme = request.getParameter("idfilme");
-		
-		DetalharFilmeDAO dfd = new DetalharFilmeDAO(conexao);
-		PegarCategoriasDAO pcd = new PegarCategoriasDAO(conexao);
-		AvaliarFilmeDAO afd = new AvaliarFilmeDAO(conexao);
-		
-		Filme f = dfd.getFilme(idFilme);	
-		ArrayList<Ator> atores = dfd.getAtorPorFilme(idFilme);
-		ArrayList<Diretor> diretores = dfd.getDiretorPorFilme(idFilme);
-		ArrayList<Categoria> categorias = pcd.pegarCategorias(idFilme);
-		double avaliacao = afd.mediaFilme(idFilme);
-		
-		request.setAttribute("filme", f);
-		request.setAttribute("atores", atores);
-		request.setAttribute("diretores", diretores);
-		request.setAttribute("categorias", categorias);
-		request.setAttribute("avaliacao", avaliacao);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/respostaDetalharFilme.jsp");
-		rd.forward(request, response);
-		
 	}
 
 }
