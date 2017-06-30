@@ -33,7 +33,7 @@
       <a href="/SistemaFilmes/listarAtores"><li><i class="material-icons" style="font-size:25px; margin-left:10px;">person</i>Atores</li></a>
       <a href="/SistemaFilmes/listarDiretores"><li><i class="material-icons" style="font-size:25px; margin-left:10px;">record_voice_over</i>Diretores</li></a>
       <a href="/SistemaFilmes/listarCategorias"><li><i class="material-icons" style="font-size:25px; margin-left:10px;">book</i>Categorias</li></a>
-      <a href="/SistemaFilmes/mainPage"><li><i class="material-icons" style="font-size:25px; margin-left:10px;">home</i>Página Principal</li></a>
+      <a href="/SistemaFilmes/mainPage"><li><i class="material-icons" style="font-size:25px; margin-left:10px;">home</i>PÃ¡gina Principal</li></a>
     </ul>
   </div>
 </nav>
@@ -62,7 +62,7 @@
 		<br>
 	<%}%>
 	<table style="border-collapse: collapse;margin-right:30px; align: center;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:1px solid #4CAF50;background-color: #4CAF50;text-align: left;width:auto;background-color: #4CAF50;color: white;float:right;">
-	<th><a href="criticaFilme?idfilme=<%=f.getIdFilme() %>" style="color:white;">Críticas</a></th>
+	<th><a href="criticaFilme?idfilme=<%=f.getIdFilme() %>" style="color:white;">CrÃ­ticas</a></th>
 	</table>
 	
 	<%if(!(u==null) && u.getPrivilegio()==1){ %>
@@ -83,7 +83,7 @@
 	<th><%out.println(f.getTitulo());%></th>
 	</table><br><br>
 	<table border="1">
-	<th>Avaliação média dos usuários: <%=avaliacao %></th>
+	<th>AvaliaÃ§Ã£o mÃ©dia dos usuÃ¡rios: <%=avaliacao %></th>
 	</table><br>
 	<% out.println("<img src='" + f.getPoster() + "' alt=Image not available/>"); %>
 
@@ -113,7 +113,7 @@
 	</table>
 	
 	<table border="1" cellspacing="0" cellpadding="0" style="float:left;margin-left:15px; font-size:15px;">
-	<tr><th>Gênero</th></tr>
+	<tr><th>GÃªnero</th></tr>
 	<%for(int i=0; i<categorias.size(); i++) {%>
 	
 
@@ -124,13 +124,18 @@
 
 	
 	<table border="1" cellspacing="0" cellpadding="0" style="float:left; font-size:15px; margin-left:15px;">
-	<tr><th>Duração</th></tr>
+	<tr><th>DuraÃ§Ã£o</th></tr>
 	<tr><td><% out.println(f.getDuracao() + " minutos"); %></td></tr>
 	</table>
 
 	<table border="1" cellspacing="0" cellpadding="0" style="float:left; font-size:15px; margin-left:15px">
-	<tr><th>Avaliação da imprensa</th></tr>
-	<tr><td><% out.println("Avaliação: " + f.getAvaliacao()); %></td></tr>
+	<tr><th>AvaliaÃ§Ã£o da imprensa</th></tr>
+	<tr><td><% out.println("AvaliaÃ§Ã£o: " + f.getAvaliacao()); %></td></tr>
+	</table>
+	
+	<table border="1" cellspacing="0" cellpadding="0" style="float:left; font-size:15px; margin-left:15px">
+	<tr><th>ClassificaÃ§Ã£o</th></tr>
+	<tr><td><% out.println(f.getClassificacao()); %> anos</td></tr>
 	</table>
 
 	<br><br><br>
